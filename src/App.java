@@ -1,11 +1,35 @@
 public class App {
   
   public static Integer findSecondSmallestItem(Integer[] arr) {
-    return 0;
+    if (arr.length <= 1) {
+      return null;
+    }
+
+    Integer smallest = Integer.MAX_VALUE;
+    Integer secondSmallest = Integer.MAX_VALUE;
+
+    for (Integer integer : arr) {
+      if (integer < smallest) {
+        secondSmallest = smallest;
+        smallest = integer;
+        continue;
+      }
+
+      if (integer < secondSmallest) {
+        secondSmallest = integer;
+      }
+    }
+
+    // If there is no second smallest item, return null
+    if (secondSmallest == Integer.MAX_VALUE) {
+      return null;
+    }
+    
+    return secondSmallest;
   }
     
   public static void main(String args[]) {
-    Integer[] arr = new Integer[]{ 5, 8, 3, 2, 6 };
+    Integer[] arr = new Integer[]{ 5, 8, 3, 3, 6 };
     System.out.println(findSecondSmallestItem(arr));
     
     Integer[] arr2 = new Integer[]{ 3, 8, 5, 2, 6 };
